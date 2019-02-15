@@ -1,0 +1,26 @@
+<html>
+	<body>
+		<h2>Hello World! It works. This would be an angular app</h2>
+		<p id="currentDate"></p>
+		<button onclick="refresh()">refresh</button>
+		
+		<script>
+		function refresh() {
+			var xhr = new XMLHttpRequest();
+			xhr.onload = function (e) {
+				if (e.target.status >= 200 && e.target.status < 300) {
+					document.getElementById("currentDate").innerText = e.target.response;
+				} else {
+					console.log('The request failed!');
+				}
+			};
+			xhr.open('GET', 'app/simple/date');
+			xhr.send();
+		}
+		refresh();
+		
+		</script>
+		
+		
+	</body>
+</html>
